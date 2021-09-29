@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import {get, getOwn} from "./api"
 import validateIp from "./utils"
 import Map from "./comps/Map"
+import Item from "./comps/Item"
 
 function App() {
 	let [coord, setCoord] = useState([0, 0])
@@ -38,24 +39,11 @@ function App() {
 				<button onClick={searchClicked}>test</button>
 			</div>
 
-			 <div className="info">
-				<div>
-					<p>IP ADRESS</p>
-					<p>none</p>
-				</div>
-				<div>
-					<p>LOCATION</p>
-					<p>none</p>
-				</div>
-				<div>
-					<p>TIMEZONE</p>
-					<p>none</p>
-				</div>
-				<div>
-					<p>ISP</p>
-					<p>none</p>
-				</div>
-
+			<div className="info">
+				<Item label="IP ADRESS" content="" />
+				<Item label="LOCATION" content="" />
+				<Item label="TIMEZONE" content="" />
+				<Item label="ISP" content="" />
 			</div>
 			<Map coord={coord} name={name} />
 			<button>Full screen icon</button>
