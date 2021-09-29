@@ -63,7 +63,6 @@ function App() {
 				<Item label="ISP" content={otherData.isp} />
 			</div>
 			<Map coord={coord} name={name} />
-			<button>Full screen icon</button>
 		</main>
 	)
 }
