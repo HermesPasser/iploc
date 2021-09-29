@@ -6,8 +6,6 @@ export default  function Map({coord, name}) {
     function ChangeMapView({ coords }) {
         const map = useMap();
         map.setView(coords, map.getZoom());
-      
-        console.log(coords)
         return null;
     }
     
