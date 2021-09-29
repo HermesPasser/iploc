@@ -29,6 +29,10 @@ h1 {
 	height: 60vh;
 }
 
+.leaflet-marker-icon {
+	content: url('assets/icon-location.svg');
+}
+
 .input-wrapper {
 	display: flex;
 	background-color: white;
