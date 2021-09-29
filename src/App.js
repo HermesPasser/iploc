@@ -4,21 +4,38 @@ import validateIp from "./utils"
 import Map from "./comps/Map"
 import Item from "./comps/Item"
 
+const dataInitState = {
+	ip: '',
+	loc: '',
+	tzone: '',
+	isp: ''
+}
+
 function App() {
 	let [coord, setCoord] = useState([0, 0])
 	let [name, setName] = useState('')
 	let [text, setText] = useState('')
+	let [otherData, setOtherData] = useState(dataInitState)
 
 	const handleChange = (evt) => {
 		setText(evt.target.value.trim())
 	}
 
 	const setData = async (data) => {
-		const lat = data['location']['lat']
-		const long = data['location']['lng']
+		const locData = data['location']
+		const lat = locData['lat']
+		const long = locData['lng']
+		const loc =  `${locData['region']}, ${locData['city']} ${locData['postalCode']}`
 
+		console.log(locData)
 		setCoord([lat, long])
 		setName(data['as']['name'])
+		setOtherData({
+			ip: data['ip'],
+			loc: loc,
+			tzone: locData['timezone'],
+			isp: data['as']['name']
+		})
 	}
 
 	const searchClicked = async () => {
@@ -40,10 +57,10 @@ function App() {
 			</div>
 
 			<div className="info">
-				<Item label="IP ADRESS" content="" />
-				<Item label="LOCATION" content="" />
-				<Item label="TIMEZONE" content="" />
-				<Item label="ISP" content="" />
+				<Item label="IP ADRESS" content={otherData.ip} />
+				<Item label="LOCATION" content={otherData.loc} />
+				<Item label="TIMEZONE" content={otherData.tzone} />
+				<Item label="ISP" content={otherData.isp} />
 			</div>
 			<Map coord={coord} name={name} />
 			<button>Full screen icon</button>
