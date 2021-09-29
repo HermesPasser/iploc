@@ -38,7 +38,6 @@ h1 {
 	background-color: white;
 	margin: auto;
 	width: 35%;
-	height: 20%;
 	margin-top: 20px;
 }
 
@@ -49,12 +48,11 @@ h1 {
 
 .input-wrapper input {
 	border: 0;
-	height: 100%;
 	width: 100%;
-	padding-left: 5px;
 	font-weight: bold; 
+	border: none;
 	font-size: medium;
-
+	padding: 20px;
 }
 
 .input-wrapper input::placeholder {
@@ -66,7 +64,8 @@ h1 {
 	background-image: url('assets/icon-arrow.svg');
 	background-position: center;
 	background-repeat: no-repeat;
-	height: 100%;
+	border: none;
+	padding: 20px;
 	width: 10%;
 }
 
