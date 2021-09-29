@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
+import {get, getOwn} from "./api"
+import validateIp from "./utils"
 import Map from "./comps/Map"
-import get from "./api"
 
 function App() {
 	let [coord, setCoord] = useState([0, 0])
@@ -11,8 +12,7 @@ function App() {
 		setText(evt.target.value.trim())
 	}
 
-	const searchClicked = async () => {
-		const data = await get(text)
+	const setData = async (data) => {
 		const lat = data['location']['lat']
 		const long = data['location']['lng']
 
@@ -20,10 +20,15 @@ function App() {
 		setName(data['as']['name'])
 	}
 
-	useEffect(() => {
-		
-		// searchClicked()
-	}, [])
+	const searchClicked = async () => {
+		if (!validateIp(text)) {
+			alert(`The given ip '${text}' not invalid`)
+			return
+		}
+		setData(await get(text))
+	}
+
+	useEffect(async () => setData(await getOwn()), [])
 
 	return ( 
 		<main>
