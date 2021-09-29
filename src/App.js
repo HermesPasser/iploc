@@ -50,18 +50,22 @@ function App() {
 
 	return ( 
 		<main>
-			<div className="input-wrapper">
-				<p>IP Address Tracker</p>
-				<input type="text" onChange={handleChange} placeholder="Search for any IP address or domain" />
-				<button onClick={searchClicked}>test</button>
-			</div>
+			<header>
+				<h1>IP Address Tracker</h1>
+				<div className="input-wrapper">
+					<input type="text" onChange={handleChange} placeholder="Search for any IP address or domain" />
+					<button id="search-btn" onClick={searchClicked}>
+						&nbsp;
+					</button>
+				</div>
 
-			<div className="info">
-				<Item label="IP ADRESS" content={otherData.ip} />
-				<Item label="LOCATION" content={otherData.loc} />
-				<Item label="TIMEZONE" content={otherData.tzone} />
-				<Item label="ISP" content={otherData.isp} />
-			</div>
+				<div className="info">
+					<Item label="IP ADRESS" content={otherData.ip} />
+					<Item label="LOCATION" content={otherData.loc} />
+					<Item label="TIMEZONE" content={otherData.tzone} />
+					<Item label="ISP" content={otherData.isp} />
+				</div>
+			</header>
 			<Map coord={coord} name={name} />
 		</main>
 	)
