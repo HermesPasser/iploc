@@ -21,7 +21,7 @@ function App() {
 		setText(evt.target.value.trim())
 	}
 
-	const setData = async (data) => {
+	const setData = (data) => {
 		const locData = data['location']
 		const lat = locData['lat']
 		const long = locData['lng']
